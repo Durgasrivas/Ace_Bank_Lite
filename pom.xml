@@ -63,11 +63,19 @@
         </dependency>
 
 
-        <!-- Source: https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <!-- PostgreSQL driver — used on Render (via DB_MYSQL_DRIVER env var) -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.7.3</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- MySQL driver — used locally (via application-dev.properties) -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.4.0</version>
             <scope>compile</scope>
         </dependency>
 

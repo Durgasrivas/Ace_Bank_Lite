@@ -69,11 +69,11 @@ public class Login extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/home");
             } else {
                 log.warning("Authentication failed for account: " + accStr);
-                response.sendRedirect("LoginFail.jsp");
+                response.sendRedirect(request.getContextPath() + "/login.jsp?error=Invalid+account+number+or+password");
             }
         } catch (Exception e) {
             log.severe("Login Error: \n" + e.getMessage());
-            response.sendRedirect("LoginFail.jsp");
+            response.sendRedirect(request.getContextPath() + "/login.jsp?error=Server+error.+Please+try+again+later");
         }
     }
 

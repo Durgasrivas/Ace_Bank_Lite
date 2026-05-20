@@ -528,6 +528,16 @@
                         </div>
                         <% } %>
 
+                        <% if (request.getParameter("error") != null) { %>
+                        <div
+                            style="background:rgba(255,70,70,0.12); border:1px solid rgba(255,70,70,0.35); color:#ff6b6b; padding:12px 16px; border-radius:10px; font-size:13px; font-weight:500; margin-bottom:18px; text-align:center; display:flex; align-items:center; justify-content:center; gap:8px;">
+                            <i class="ri-error-warning-line" style="font-size:16px;"></i>
+                            <%= request.getParameter("error") %>
+                        </div>
+                        <% } %>
+
+
+
                             <form action="Login" method="POST">
                                 <div class="form-control">
                                     <label><i class="ri-bank-card-line" style="margin-right:4px;"></i> Account

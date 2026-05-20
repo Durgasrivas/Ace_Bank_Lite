@@ -68,12 +68,12 @@ public class SignUp extends HttpServlet {
 // REDIRECT: Tells browser "Go to /home using GET"
                 response.sendRedirect(request.getContextPath() + "/home");
             } else {
-                response.sendRedirect("GenericError.html");
+                response.sendRedirect(request.getContextPath() + "/sign-up.jsp?error=Registration+failed.+Email+or+Aadhaar+may+already+exist");
             }
 
         } catch (Exception e) {
             log.severe("SignUp Servlet Error: " + e.getMessage());
-            response.sendRedirect("GenericError.html");
+            response.sendRedirect(request.getContextPath() + "/sign-up.jsp?error=Server+error.+Please+try+again+later");
         }
     }
 }

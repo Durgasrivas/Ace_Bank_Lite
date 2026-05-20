@@ -24,11 +24,8 @@ user:
     WHERE a.ACCOUNT_NO = ?
 
   # Updates the password hash for the user linked to this account
-  update_password: >
-    UPDATE USERS SET PASSWORD_HASH = ?
-    FROM ACCOUNTS
-    WHERE ACCOUNTS.USER_ID = USERS.USER_ID
-    AND ACCOUNTS.ACCOUNT_NO = ?
+  update_password: >-
+    UPDATE USERS SET PASSWORD_HASH = ? WHERE USER_ID = ?
 
 account:
   create: "INSERT INTO ACCOUNTS (ACCOUNT_NO, USER_ID, BALANCE) VALUES (?,?,0.00)"

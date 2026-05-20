@@ -25,10 +25,10 @@ user:
 
   # Updates the password hash for the user linked to this account
   update_password: >
-    UPDATE USERS u
-    JOIN ACCOUNTS a ON u.USER_ID = a.USER_ID
-    SET u.PASSWORD_HASH = ?
-    WHERE a.ACCOUNT_NO = ?
+    UPDATE USERS SET PASSWORD_HASH = ?
+    FROM ACCOUNTS
+    WHERE ACCOUNTS.USER_ID = USERS.USER_ID
+    AND ACCOUNTS.ACCOUNT_NO = ?
 
 account:
   create: "INSERT INTO ACCOUNTS (ACCOUNT_NO, USER_ID, BALANCE) VALUES (?,?,0.00)"
@@ -48,7 +48,7 @@ transaction:
     SELECT SUM(AMOUNT) FROM TRANSACTIONS 
     WHERE SENDER_ACCOUNT = ? 
     AND TX_TYPE = 'WITHDRAWAL' 
-    AND DATE(CREATED_AT) = CURDATE()
+    AND DATE(CREATED_AT) = CURRENT_DATE
   log_withdrawal: >
     INSERT INTO TRANSACTIONS (SENDER_ACCOUNT, RECEIVER_ACCOUNT, AMOUNT, TX_TYPE, REMARK) 
     VALUES (?, ?, ?, 'WITHDRAWAL', 'ATM/Counter Withdrawal')

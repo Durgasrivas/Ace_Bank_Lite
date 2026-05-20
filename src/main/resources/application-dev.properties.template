@@ -3,11 +3,11 @@ mail.default.address=
 mail.google.app.password=
 
 # Database Configuration
-db.url=jdbc:mysql://localhost:3306/acebank_lite
-db.user=root
+db.url=jdbc:postgresql://localhost:5432/acebank
+db.user=postgres
 db.password=
 db.script.path=/sql/schema_initializer.sql
-db.mysql.driver=com.mysql.cj.jdbc.Driver
+db.mysql.driver=org.postgresql.Driver
 
 # SMTP Server Settings
 mail.smtp.host=smtp.gmail.com
